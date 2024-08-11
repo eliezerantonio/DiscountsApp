@@ -5,45 +5,29 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.discountsapp.Views.HomeView
+import com.example.discountsapp.Views.HomeView2
+import com.example.discountsapp.Views.HomeView3
 import com.example.discountsapp.ui.theme.DiscountsAppTheme
+import com.example.discountsapp.viewModels.CalculateViewModel2
+import com.example.discountsapp.viewModels.CalculateViewModel3
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val viewModel: CalculateViewModel3 by viewModels()
         setContent {
             DiscountsAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
-                    HomeView(
-
-                    )
+                    HomeView3(viewModel = viewModel )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DiscountsAppTheme {
-        Greeting("Android")
     }
 }
